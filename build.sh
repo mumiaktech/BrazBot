@@ -2,8 +2,8 @@
 # Exit on error
 set -o errexit
 
-# Install dependencies using pipenv
-pipenv install --deploy --ignore-pipfile
+# Install dependencies using requirements.txt
+pip install -r requirements.txt
 
 # Start your Python application
-pipenv run python brazbot.py
+python brazbot.py

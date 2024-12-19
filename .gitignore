@@ -1,9 +1,35 @@
-#Environmental variables
-.env
-
 # Python bytecode
 __pycache__/
-*__pycache__/
 *.pyc
 *.pyo
 *.pyd
+
+# Virtual environment
+venv/
+env/
+.venv/
+
+# IDE/editor folders and files
+.idea/
+.vscode/
+*.sublime-project
+*.sublime-workspace
+
+# Build, dist, egg info
+build/
+dist/
+*.egg-info/
+
+# Logs
+*.log
+
+# Jupyter Notebook checkpoints
+.ipynb_checkpoints/
+
+# OS-specific files
+.DS_Store
+Thumbs.db
+
+# Environment variables
+.env
+.env.*
