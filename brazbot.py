@@ -4,6 +4,8 @@ import telebot
 from telebot import types
 from dotenv import load_dotenv
 
+sys.stdout.reconfigure(encoding='utf-8')
+
 # Load environment variables from the .env file
 load_dotenv()
 
