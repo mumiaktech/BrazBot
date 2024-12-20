@@ -1,29 +1,29 @@
 import os
 import sys
+import threading
 import telebot
 from telebot import types
 from dotenv import load_dotenv
-
-sys.stdout.reconfigure(encoding='utf-8')
+from http.server import HTTPServer, BaseHTTPRequestHandler
 
 # Load environment variables from the .env file
 load_dotenv()
 
+# Reconfigure stdout to handle UTF-8
+sys.stdout.reconfigure(encoding='utf-8')
+
 try:
-    # Get the BOT_TOKEN from environment variables using os.getenv
+    # Get the BOT_TOKEN from environment variables
     BOT_TOKEN = os.getenv("BOT_TOKEN")
     
-    # Validate if BOT_TOKEN is set
     if not BOT_TOKEN:
         raise ValueError("Error: BOT_TOKEN environment variable is not set. Please configure it.")
     
     # Initialize the bot
     bot = telebot.TeleBot(BOT_TOKEN)
-    
-    # Print the BOT_TOKEN safely (masking part of it)
     print(f"BOT_TOKEN successfully loaded: {BOT_TOKEN[:5]}***{BOT_TOKEN[-3:]}")
-
-    # Function to display the main menu
+    
+    # Define the main menu function
     def show_main_menu(chat_id):
         markup = types.ReplyKeyboardMarkup(resize_keyboard=True)
         markup.add("ℹ️ About", "🔍 Definitions")
@@ -34,13 +34,12 @@ try:
         markup.add("💡 Tips", "🆘 Help")
         bot.send_message(chat_id, "Choose an option from the menu to continue: ", reply_markup=markup)
 
-    # Command handler to start the bot and show the menu
+    # Bot command handlers
     @bot.message_handler(commands=['start', 'menu'])
     def send_start(message):
         bot.send_message(message.chat.id, "Welcome to BrazBot! ☕")
         show_main_menu(message.chat.id)
 
-    # Command handlers for menu options
     @bot.message_handler(func=lambda message: message.text == "☕ Coffee Types")
     def handle_coffee_types(message):
         from commands.coffee_types import send_coffee_types
@@ -113,9 +112,25 @@ try:
         send_tips(bot, message.chat.id)
         show_main_menu(message.chat.id)
 
-    # Keep the bot running
-    print("✅ BrazBot is running...")
-    bot.infinity_polling()
+    # Run the bot in a separate thread
+    def run_bot():
+        print("✅ BrazBot is running...")
+        bot.infinity_polling()
+
+    bot_thread = threading.Thread(target=run_bot)
+    bot_thread.start()
+
+    # Simple HTTP server to keep the service running on Render
+    class HealthCheckHandler(BaseHTTPRequestHandler):
+        def do_GET(self):
+            self.send_response(200)
+            self.end_headers()
+            self.wfile.write(b"Health check: BrazBot is running")
+
+    PORT = int(os.getenv("PORT", 8080))
+    httpd = HTTPServer(("", PORT), HealthCheckHandler)
+    print(f"HTTP server running on port {PORT}")
+    httpd.serve_forever()
 
 except ValueError as ve:
     print(f"[ValueError] {ve}")
