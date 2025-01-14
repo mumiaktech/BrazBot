@@ -1,8 +1,9 @@
 # BrazBot
 
-BrazBot is an interactive Telegram bot dedicated to educating users about coffee through the lens of agribusiness. It provides valuable insights into farming equipment, crop management, sustainable agriculture, and much more. Whether you're a coffee enthusiast, a farmer, or someone curious about coffee's journey from crop to cup, BrazBot has you covered.
+[![BrazBot Video](img/bot.png)](https://youtu.be/HUqXdk3M7cQ)
+BrazBot Video
 
-![BrazBot](img/bot.png)
+BrazBot is an interactive Telegram bot dedicated to educating users about coffee through the lens of agribusiness. It provides valuable insights into farming equipment, crop management, sustainable agriculture, and much more. Whether you're a coffee enthusiast, a farmer, or someone curious about coffee's journey from crop to cup, BrazBot has you covered.
 
 ## Features
 
