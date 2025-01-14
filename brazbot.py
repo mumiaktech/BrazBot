@@ -28,7 +28,7 @@ try:
         markup = types.ReplyKeyboardMarkup(resize_keyboard=True)
         markup.add("ℹ️ About", "🔍 Terms")
         markup.add("🌍 Coffee Origins", "☕ Coffee Types")
-        markup.add("📖 Brewing Methods", "🍳 Recipes")
+        markup.add("📖 Techniques", "🍳 Recipes")
         markup.add("⚙️ Equipment", "📚 Coffee Facts")
         markup.add("📬 Subscribe", "🆘 Help")
         bot.send_message(chat_id, "Choose an option from the menu to continue: ", reply_markup=markup)
