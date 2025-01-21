@@ -12,4 +12,4 @@ from commands.help import send_help
 from commands.agribusiness import send_agribusiness
 from commands.crop_manage import send_crop_manage
 from commands.sustainable_prac import send_sus_prac
-from commands.pest import send_pest
+from commands.pest import send_pests
