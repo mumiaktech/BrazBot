@@ -102,26 +102,26 @@ try:
         show_main_menu(message.chat.id)
 
     @bot.message_handler(func=lambda message: message.text == "Agribusiness")
-    def handle_equipment(message):
-        from commands.equipments import send_agribusiness
+    def handle_agribusiness(message):
+        from commands.agribusiness import send_agribusiness
         send_agribusiness(bot, message.chat.id)
         show_main_menu(message.chat.id)
 
     @bot.message_handler(func=lambda message: message.text == "Crop Management")
-    def handle_equipment(message):
-        from commands.equipments import send_crop_manage
+    def handle_crop_management(message):
+        from commands.crop_manage import send_crop_manage
         send_crop_manage(bot, message.chat.id)
         show_main_menu(message.chat.id)
 
     @bot.message_handler(func=lambda message: message.text == "Sustainable Practices")
-    def handle_equipment(message):
-        from commands.equipments import send_sus_prac
+    def handle_sus_prac(message):
+        from commands.sustainable_prac import send_sus_prac
         send_sus_prac(bot, message.chat.id)
         show_main_menu(message.chat.id)
 
     @bot.message_handler(func=lambda message: message.text == "Disease & Pest Identification")
-    def handle_equipment(message):
-        from commands.equipments import send_pest
+    def handle_pest(message):
+        from commands.pest import send_pest
         send_pest(bot, message.chat.id)
         show_main_menu(message.chat.id)
 
