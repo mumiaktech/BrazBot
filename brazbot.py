@@ -120,9 +120,9 @@ try:
         show_main_menu(message.chat.id)
 
     @bot.message_handler(func=lambda message: message.text == "Disease & Pest Identification")
-    def handle_pest(message):
-        from commands.pest import send_pest
-        send_pest(bot, message.chat.id)
+    def handle_pests(message):
+        from commands.pest import send_pests
+        send_pests(bot, message.chat.id)
         show_main_menu(message.chat.id)
 
     # Run the bot in a separate thread

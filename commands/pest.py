@@ -1,6 +1,6 @@
 # Coffee Facts - Fun and interesting coffee facts
-def send_pest(bot, chat_id):
-    pest_text = """
+def send_pests(bot, chat_id):
+    pests_text = """
     Common Coffee Diseases:
     Coffee Leaf Rust (CLR) (Hemileia vastatrix)  
     Coffee Berry Disease (CBD) (Colletotrichum kahawae)
@@ -21,4 +21,4 @@ def send_pest(bot, chat_id):
     Environmental Factors: Note the climate and season, as some pests and diseases thrive in specific conditions (e.g., humidity for rust).
     Sampling: Collect affected plant parts for closer examination or lab testing if needed.
     """
-    bot.send_message(chat_id, pest_text)
+    bot.send_message(chat_id, pests_text)
