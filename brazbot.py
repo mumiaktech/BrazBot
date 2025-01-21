@@ -27,6 +27,8 @@ try:
     def show_main_menu(chat_id):
         markup = types.ReplyKeyboardMarkup(resize_keyboard=True)
         markup.add("ℹ️ About", "🔍 Terms")
+        markup.add("Agribusiness", "Crop Management")
+        markup.add("Sustainable Practices", "Diseases & Pest Identification")
         markup.add("🌍 Coffee Origins", "☕ Coffee Types")
         markup.add("📖 Techniques", "🍳 Recipes")
         markup.add("⚙️ Equipment", "📚 Coffee Facts")
@@ -97,6 +99,30 @@ try:
     def handle_help(message):
         from commands.help import send_help
         send_help(bot, message.chat.id)
+        show_main_menu(message.chat.id)
+
+    @bot.message_handler(func=lambda message: message.text == "Agribusiness")
+    def handle_equipment(message):
+        from commands.equipments import send_agribusiness
+        send_agribusiness(bot, message.chat.id)
+        show_main_menu(message.chat.id)
+
+    @bot.message_handler(func=lambda message: message.text == "Crop Management")
+    def handle_equipment(message):
+        from commands.equipments import send_crop_manage
+        send_crop_manage(bot, message.chat.id)
+        show_main_menu(message.chat.id)
+
+    @bot.message_handler(func=lambda message: message.text == "Sustainable Practices")
+    def handle_equipment(message):
+        from commands.equipments import send_sus_prac
+        send_sus_prac(bot, message.chat.id)
+        show_main_menu(message.chat.id)
+
+    @bot.message_handler(func=lambda message: message.text == "Disease & Pest Identification")
+    def handle_equipment(message):
+        from commands.equipments import send_pest
+        send_pest(bot, message.chat.id)
         show_main_menu(message.chat.id)
 
     # Run the bot in a separate thread

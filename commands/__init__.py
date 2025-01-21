@@ -9,3 +9,7 @@ from commands.about import send_about
 from commands.terms import send_terms
 from commands.equipments import send_equipments
 from commands.help import send_help
+from commands.agribusiness import send_agribusiness
+from commands.crop_manage import send_crop_manage
+from commands.sustainable_prac import send_sus_prac
+from commands.pest import send_pest
